@@ -44,7 +44,7 @@ const evidenceItems=[
  {img:'合影 (3).jpg',alt:'藤编羌绣非遗考察团合影',caption:'藤编、羌绣非遗考察团合影',label:'考察合影'}
 ];
 $$('#resultEvidence .evidence-card').forEach((card,index)=>{const item=evidenceItems[index];card.dataset.image=item.img;card.dataset.caption=item.caption;card.querySelector('img').src=item.img;card.querySelector('img').alt=item.alt;card.querySelector('span').textContent=item.label});
-$('.hero-actions').insertAdjacentHTML('beforeend','<button class="button button-ghost video-trigger" type="button" data-video="一根青藤的逆袭.mp4">完整观看影片 <span>▶</span></button>');
+$('.hero-actions').insertAdjacentHTML('beforeend','<button class="button button-ghost video-trigger" type="button" data-video="hero-rattan.mp4">完整观看影片 <span>▶</span></button>');
 const coCreateSlides=['家具2.jpg','娱乐装饰5.jpg','家具5.jpg'];coCreateSlides.forEach(src=>{const image=new Image();image.src=src});let coCreateIndex=0;let coCreateCurrent=$('.co-create-slide.current');let coCreateNext=$('.co-create-slide.next');setInterval(()=>{coCreateIndex=(coCreateIndex+1)%coCreateSlides.length;coCreateNext.src=coCreateSlides[coCreateIndex];coCreateNext.classList.add('slide-right');requestAnimationFrame(()=>{coCreateCurrent.classList.add('slide-left');coCreateNext.classList.remove('slide-right')});setTimeout(()=>{coCreateCurrent.classList.add('no-motion','slide-right');coCreateCurrent.classList.remove('slide-left','current');coCreateNext.classList.add('current');const previous=coCreateCurrent;coCreateCurrent=coCreateNext;coCreateNext=previous;requestAnimationFrame(()=>coCreateNext.classList.remove('no-motion'))},900)},5000);
 $('.life-block .showcase-copy>p:not(.eyebrow)').textContent='从座椅、灯具到提篮和收纳，产品是传统技艺与当代生活之间最具体的连接。';
 $('.logic-heading .eyebrow').textContent='03 / PROJECT LOGIC';
