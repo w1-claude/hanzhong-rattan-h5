@@ -1,4 +1,5 @@
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+const contextPhoto=$('.context-card .image-trigger');contextPhoto.dataset.image='xijinping-hanzhong-2023.jpg';contextPhoto.querySelector('img').src='xijinping-hanzhong-2023.jpg';
 const craft=[
  {img:'藤编制作工艺流程.jpg',text:'观察藤条的韧性与纹理，选择适合当季的材料。'},
  {img:'藤编工艺制作过程.jpg',text:'去皮、浸润、晾晒，让材料在手中恢复柔韧。'},
