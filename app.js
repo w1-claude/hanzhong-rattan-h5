@@ -1,24 +1,4 @@
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
-const heroVideo=$('#heroVideo');
-heroVideo.muted=true;
-heroVideo.defaultMuted=true;
-heroVideo.playsInline=true;
-heroVideo.volume=0;
-const playHeroVideo=()=>heroVideo.play().catch(()=>{});
-const playHeroVideoInWeChat=()=>{
-  heroVideo.load();
-  playHeroVideo();
-  window.setTimeout(playHeroVideo,120);
-};
-heroVideo.addEventListener('loadedmetadata',playHeroVideo,{once:true});
-heroVideo.addEventListener('canplay',playHeroVideo,{once:true});
-if(typeof window.WeixinJSBridge!=='undefined')playHeroVideoInWeChat();
-else document.addEventListener('WeixinJSBridgeReady',playHeroVideoInWeChat,{once:true});
-document.addEventListener('YixinJSBridgeReady',playHeroVideoInWeChat,{once:true});
-document.addEventListener('touchstart',playHeroVideo,{once:true,passive:true});
-window.addEventListener('pageshow',playHeroVideo);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)playHeroVideo()});
-playHeroVideo();
 const contextPhoto=$('.context-card .image-trigger');contextPhoto.dataset.image='xijinping-hanzhong-2023.jpg';contextPhoto.querySelector('img').src='xijinping-hanzhong-2023.jpg';
 const craft=[
  {img:'藤编制作工艺流程.jpg',text:'观察藤条的韧性与纹理，选择适合当季的材料。'},
