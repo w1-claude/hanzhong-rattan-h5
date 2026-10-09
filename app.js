@@ -1,4 +1,13 @@
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+const heroVideo=$('.hero-media video');
+heroVideo.muted=true;
+heroVideo.defaultMuted=true;
+heroVideo.playsInline=true;
+const playHeroVideo=()=>heroVideo.play().catch(()=>{});
+heroVideo.addEventListener('loadedmetadata',playHeroVideo,{once:true});
+heroVideo.addEventListener('canplay',playHeroVideo,{once:true});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)playHeroVideo()});
+playHeroVideo();
 const contextPhoto=$('.context-card .image-trigger');contextPhoto.dataset.image='xijinping-hanzhong-2023.jpg';contextPhoto.querySelector('img').src='xijinping-hanzhong-2023.jpg';
 const craft=[
  {img:'藤编制作工艺流程.jpg',text:'观察藤条的韧性与纹理，选择适合当季的材料。'},
