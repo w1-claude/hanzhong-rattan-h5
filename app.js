@@ -1,14 +1,22 @@
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
-const heroVideo=$('.hero-media video');
+const heroVideo=$('#heroVideo');
 heroVideo.muted=true;
 heroVideo.defaultMuted=true;
 heroVideo.playsInline=true;
+heroVideo.volume=0;
 const playHeroVideo=()=>heroVideo.play().catch(()=>{});
+const playHeroVideoInWeChat=()=>{
+  heroVideo.load();
+  playHeroVideo();
+  window.setTimeout(playHeroVideo,120);
+};
 heroVideo.addEventListener('loadedmetadata',playHeroVideo,{once:true});
 heroVideo.addEventListener('canplay',playHeroVideo,{once:true});
-document.addEventListener('WeixinJSBridgeReady',playHeroVideo,false);
-document.addEventListener('YixinJSBridgeReady',playHeroVideo,false);
+if(typeof window.WeixinJSBridge!=='undefined')playHeroVideoInWeChat();
+else document.addEventListener('WeixinJSBridgeReady',playHeroVideoInWeChat,{once:true});
+document.addEventListener('YixinJSBridgeReady',playHeroVideoInWeChat,{once:true});
 document.addEventListener('touchstart',playHeroVideo,{once:true,passive:true});
+window.addEventListener('pageshow',playHeroVideo);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)playHeroVideo()});
 playHeroVideo();
 const contextPhoto=$('.context-card .image-trigger');contextPhoto.dataset.image='xijinping-hanzhong-2023.jpg';contextPhoto.querySelector('img').src='xijinping-hanzhong-2023.jpg';
